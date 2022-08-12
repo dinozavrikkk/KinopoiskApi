@@ -2,5 +2,6 @@
 import Foundation
 
 protocol TopFilmsActionListeningDelegate: AnyObject {
-    func dataTransmission(pagination: Bool)
+    func viewIsReady()
+    func viewWillReachFilmLimit()
 }

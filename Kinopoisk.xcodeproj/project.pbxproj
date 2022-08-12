@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84CA598D28A685FC005CE33B /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CA598C28A685FC005CE33B /* Service.swift */; };
 		84FF80FE28994A60005F48DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF80FD28994A60005F48DB /* AppDelegate.swift */; };
 		84FF810028994A60005F48DB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF80FF28994A60005F48DB /* SceneDelegate.swift */; };
 		84FF810228994A60005F48DB /* TopFilmsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF810128994A60005F48DB /* TopFilmsViewController.swift */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		59641227EF30FCC2BEEC2E3B /* Pods-Kinopoisk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kinopoisk.release.xcconfig"; path = "Target Support Files/Pods-Kinopoisk/Pods-Kinopoisk.release.xcconfig"; sourceTree = "<group>"; };
+		84CA598C28A685FC005CE33B /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		84FF80FA28994A60005F48DB /* Kinopoisk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kinopoisk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84FF80FD28994A60005F48DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84FF80FF28994A60005F48DB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 			children = (
 				84FF812328996E18005F48DB /* TopFilmsDataProvider.swift */,
 				84FF812128996B35005F48DB /* TopFilmsDataModel.swift */,
+				84CA598C28A685FC005CE33B /* Service.swift */,
 				84FF811D2899659A005F48DB /* TopFilmsDataProviding.swift */,
 			);
 			path = DataModel;
@@ -153,17 +156,9 @@
 				84FF811528994DE3005F48DB /* TopFilmsView.swift */,
 				84FF8117289952B3005F48DB /* TopFilmsTableViewCell.swift */,
 				84FF811F28996653005F48DB /* TopFilmsControllerDelegate.swift */,
-				84FF81272899E997005F48DB /* Features */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		84FF81272899E997005F48DB /* Features */ = {
-			isa = PBXGroup;
-			children = (
 				84FF81252899E5E3005F48DB /* TopFilmsAssistent.swift */,
 			);
-			path = Features;
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84FF81292899F42A005F48DB /* ModuleBuilder.swift in Sources */,
+				84CA598D28A685FC005CE33B /* Service.swift in Sources */,
 				84FF812428996E18005F48DB /* TopFilmsDataProvider.swift in Sources */,
 				84FF811E2899659A005F48DB /* TopFilmsDataProviding.swift in Sources */,
 				84FF81262899E5E3005F48DB /* TopFilmsAssistent.swift in Sources */,

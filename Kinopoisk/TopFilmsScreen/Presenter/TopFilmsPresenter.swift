@@ -17,8 +17,16 @@ final class TopFilmsPresenter {
 //MARK: TopFilmsActionListeningDelegate
 extension TopFilmsPresenter: TopFilmsActionListeningDelegate {
     
-    func dataTransmission(pagination: Bool = false) {
-        dataProvider.gettingData(pagination: pagination) { [weak self] result in
+    func viewIsReady() {
+        dataTransmission()
+    }
+    
+    func viewWillReachFilmLimit() {
+        dataTransmission()
+    }
+    
+    private func dataTransmission() {
+        dataProvider.gettingData() { [weak self] result in
             switch result {
             case .success(let model):
                 self?.viewController?.fetchModel(data: model)

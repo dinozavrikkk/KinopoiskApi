@@ -4,24 +4,22 @@ import UIKit
 
 final class TopFilmsAssistent {
     
-    private var array: [Film] = []
+    private var filmsArray: [Film] = []
     
     static let shared: TopFilmsAssistent = TopFilmsAssistent()
     
     private init() { }
     
     func fillingArrayWithData(data: Kino) {
-        for model in data.films {
-            array.append(model)
-        }
+        filmsArray += data.films
     }
     
     func numberOfRowsInSection() -> Int {
-        array.count
+        filmsArray.count
     }
     
     func getFilm(for indexPath: IndexPath) -> Film {
-        array[indexPath.row]
+        filmsArray[indexPath.row]
     }
     
 }

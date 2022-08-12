@@ -13,7 +13,7 @@ final class TopFilmsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         customizationTableView()
-        presenter?.dataTransmission(pagination: false)
+        presenter?.viewIsReady()
         updateNavBarTitle()
     }
 
@@ -35,18 +35,10 @@ extension TopFilmsViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-}
-
-extension TopFilmsViewController: UIScrollViewDelegate {
-    
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        let position = scrollView.contentOffset.y
-//        if position > (topFilmView.tableView.contentSize.height - 100 - scrollView.frame.size.height) {
-//            presenter?.dataTransmission(pagination: true)
-//            topFilmView.tableView.reloadData()
-//            print("warning")
-//        }
-//    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard indexPath.item + 5 >= TopFilmsAssistent.shared.numberOfRowsInSection() else { return }
+        presenter?.viewWillReachFilmLimit()
+    }
     
 }
 
