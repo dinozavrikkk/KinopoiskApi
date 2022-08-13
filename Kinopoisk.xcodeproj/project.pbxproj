@@ -142,8 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				84FF812328996E18005F48DB /* TopFilmsDataProvider.swift */,
-				84FF812128996B35005F48DB /* TopFilmsDataModel.swift */,
 				84CA598C28A685FC005CE33B /* Service.swift */,
+				84FF812128996B35005F48DB /* TopFilmsDataModel.swift */,
 				84FF811D2899659A005F48DB /* TopFilmsDataProviding.swift */,
 			);
 			path = DataModel;
