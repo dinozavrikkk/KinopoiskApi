@@ -23,7 +23,7 @@ final class TopFilmsViewController: UIViewController {
 extension TopFilmsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        TopFilmsAssistent.shared.numberOfRowsInSection()
+        presenter?.returnTheNumberOfFilms() ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -31,12 +31,16 @@ extension TopFilmsViewController: UITableViewDelegate, UITableViewDataSource {
         else {
             return UITableViewCell()
         }
-        cell.update(model: TopFilmsAssistent.shared.getFilm(for: indexPath))
+        if let model = presenter?.returnTheFilms(for: indexPath) {
+            cell.update(model: model)
+        } else {
+            print("Ячейки не заполнились")
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard indexPath.item + 5 >= TopFilmsAssistent.shared.numberOfRowsInSection() else { return }
+        guard indexPath.item + 5 >= presenter?.returnTheNumberOfFilms() ?? 0 else { return }
         presenter?.viewWillReachFilmLimit()
     }
     
@@ -45,8 +49,7 @@ extension TopFilmsViewController: UITableViewDelegate, UITableViewDataSource {
 //MARK: TopFilmsControllerDelegate
 extension TopFilmsViewController: TopFilmsControllerDelegate {
     
-    func fetchModel(data: Kino) {
-        TopFilmsAssistent.shared.fillingArrayWithData(data: data)
+    func fetchModel() {
         topFilmView.tableView.reloadData()
     }
 

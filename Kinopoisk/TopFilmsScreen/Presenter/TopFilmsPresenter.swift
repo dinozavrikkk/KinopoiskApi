@@ -4,10 +4,10 @@ import UIKit
 
 final class TopFilmsPresenter {
     
-    private let dataProvider: TopFilmsDataProviding
+    private let dataProvider: TopFilmsDataProvidingProtocol
     private weak var viewController: TopFilmsControllerDelegate?
     
-    init(dataProvider: TopFilmsDataProviding, viewController: TopFilmsControllerDelegate?) {
+    init(dataProvider: TopFilmsDataProvidingProtocol, viewController: TopFilmsControllerDelegate?) {
         self.dataProvider = dataProvider
         self.viewController = viewController
     }
@@ -16,6 +16,12 @@ final class TopFilmsPresenter {
 
 //MARK: TopFilmsActionListeningDelegate
 extension TopFilmsPresenter: TopFilmsActionListeningDelegate {
+   
+    private func dataTransmission() {
+        dataProvider.gettingData { [weak self] _ in
+            self?.viewController?.fetchModel()
+        }
+    }
     
     func viewIsReady() {
         dataTransmission()
@@ -25,15 +31,13 @@ extension TopFilmsPresenter: TopFilmsActionListeningDelegate {
         dataTransmission()
     }
     
-    private func dataTransmission() {
-        dataProvider.gettingData() { [weak self] result in
-            switch result {
-            case .success(let model):
-                self?.viewController?.fetchModel(data: model)
-            case .failure(let error):
-                print(error)
-            }
-        }
+    func returnTheNumberOfFilms() -> Int {
+        dataProvider.getTheNumberOfFilms()
     }
+    
+    func returnTheFilms(for indexPath: IndexPath) -> Film {
+        dataProvider.gettingFilmForCell(for: indexPath)
+    }
+    
 }
 
