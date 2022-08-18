@@ -18,11 +18,11 @@ extension FilmsDataStorage: FilmsDataStorageProtocol {
         return films += data.films
     }
 
-    func transmittingFilmsArray() -> [Film] {
+    var transmittingFilmsArray: [Film] {
         return films
     }
-
-    func numberOfRowsInSection() -> Int {
+    
+    var numberOfRowsInSection: Int {
         return films.count
     }
 

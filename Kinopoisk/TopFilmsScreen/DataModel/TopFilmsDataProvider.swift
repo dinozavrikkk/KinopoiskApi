@@ -30,7 +30,7 @@ extension TopFilmsDataProvider: TopFilmsDataProvidingProtocol {
     }
     
     func getTheNumberOfFilms() -> Int {
-        dataStorage.numberOfRowsInSection()
+        dataStorage.numberOfRowsInSection
     }
     
     func gettingFilmForCell(for indexPath: IndexPath) -> Film {

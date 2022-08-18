@@ -31,13 +31,14 @@ extension TopFilmsPresenter: TopFilmsActionListeningDelegate {
         dataTransmission()
     }
     
-    func returnTheNumberOfFilms() -> Int {
+    var filmsCount: Int {
         dataProvider.getTheNumberOfFilms()
     }
     
-    func returnTheFilms(for indexPath: IndexPath) -> Film {
+    func film(for indexPath: IndexPath) -> Film {
         dataProvider.gettingFilmForCell(for: indexPath)
     }
+    
     
 }
 

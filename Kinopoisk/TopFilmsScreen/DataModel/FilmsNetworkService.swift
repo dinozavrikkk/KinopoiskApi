@@ -29,7 +29,7 @@ extension FilmsNetworkService: FilmsNetworkServiceProtocol {
                 if let data = data, let topFilms = try? JSONDecoder().decode(Kino.self, from: data) {
                     DispatchQueue.main.async {
                         self.dataStorage.fillingFilmsWithData(data: topFilms)
-                        completion(.success(self.dataStorage.transmittingFilmsArray()))
+                        completion(.success(self.dataStorage.transmittingFilmsArray))
                     }
                 } else {
                     self.currentPage -= 1

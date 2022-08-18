@@ -23,7 +23,7 @@ final class TopFilmsViewController: UIViewController {
 extension TopFilmsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        presenter?.returnTheNumberOfFilms() ?? 0
+        presenter?.filmsCount ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -31,7 +31,7 @@ extension TopFilmsViewController: UITableViewDelegate, UITableViewDataSource {
         else {
             return UITableViewCell()
         }
-        if let model = presenter?.returnTheFilms(for: indexPath) {
+        if let model = presenter?.film(for: indexPath) {
             cell.update(model: model)
         } else {
             print("Ячейки не заполнились")
@@ -40,7 +40,8 @@ extension TopFilmsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard indexPath.item + 5 >= presenter?.returnTheNumberOfFilms() ?? 0 else { return }
+        let numberOfCellsAtTheBottomOfTheTable = 5
+        guard indexPath.item + numberOfCellsAtTheBottomOfTheTable >= presenter?.filmsCount ?? 0 else { return }
         presenter?.viewWillReachFilmLimit()
     }
     
