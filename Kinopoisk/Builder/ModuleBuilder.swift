@@ -5,7 +5,8 @@ import UIKit
 enum ModuleBuilder {
     
     static func assemblyMainController() -> UIViewController {
-        let dataProvider = TopFilmsDataProvider()
+        let networkService = FilmsNetworkService()
+        let dataProvider = TopFilmsDataProvider(networkService: networkService)
         let viewController = TopFilmsViewController()
         let presenter = TopFilmsPresenter(dataProvider: dataProvider, viewController: viewController)
         

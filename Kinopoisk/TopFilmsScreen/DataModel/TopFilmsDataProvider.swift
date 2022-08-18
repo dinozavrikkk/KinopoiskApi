@@ -4,22 +4,37 @@ import UIKit
 
 final class TopFilmsDataProvider {
     
-
+    private let dataStorage: FilmsDataStorageProtocol
+    private let networkService: FilmsNetworkServiceProtocol
+    
+    init(dataStorage: FilmsDataStorageProtocol = FilmsDataStorage.shared,
+         networkService: FilmsNetworkServiceProtocol) {
+        self.networkService = networkService
+        self.dataStorage = dataStorage
+    }
     
 }
 
 //MARK: TopFilmsDataProviding
-extension TopFilmsDataProvider: TopFilmsDataProviding {
+extension TopFilmsDataProvider: TopFilmsDataProvidingProtocol {
     
-    func gettingData(completion: @escaping (Result<Kino, Error>) -> Void) {
-        Service.shared.goingOnline { result in
+    func gettingData(completion: @escaping ([Film]) -> Void) {
+        networkService.workingWithNetwork { result in
             switch result {
             case .success(let model):
-                completion(.success(model))
+                completion(model)
             case .failure(let error):
-                completion(.failure(error))
+                print(error)
             }
         }
+    }
+    
+    func getTheNumberOfFilms() -> Int {
+        dataStorage.numberOfRowsInSection
+    }
+    
+    func gettingFilmForCell(for indexPath: IndexPath) -> Film {
+        dataStorage.getFilm(for: indexPath)
     }
     
 }
